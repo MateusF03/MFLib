@@ -50,7 +50,6 @@ public class ItemBuilder {
             Object nmsCopy = nmsReflect.getCraftBukkitClass("inventory", "CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null,itemStack);
             Object nbtTagCompound = nmsReflect.getNMSClass("NBTTagCompound").getConstructor().newInstance();
             boolean b = nmsCopy.getClass().getMethod("getTag").invoke(nmsCopy) != null;
-            System.out.println(b);
             Object nbtTag = b ? nmsCopy.getClass().getMethod("getTag").invoke(nmsCopy) : nbtTagCompound;
             Constructor nbsString = nmsReflect.getNMSClass("NBTTagString").getConstructor(String.class);
             nbtTag.getClass().getMethod("set", String.class, nmsReflect.getNMSClass("NBTBase"))
