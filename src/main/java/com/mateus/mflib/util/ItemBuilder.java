@@ -54,7 +54,6 @@ public class ItemBuilder {
             nbtTag.getClass().getMethod("set", String.class, nmsReflect.getNMSClass("NBTBase"))
                     .invoke(nbtTag ,key, nbsString.newInstance(value));
             nmsCopy.getClass().getMethod("setTag", nmsReflect.getNMSClass("NBTTagCompound")).invoke(nmsCopy, nbtTag);
-            //this.nmsCopy = nmsCopy;
             this.itemStack = (ItemStack) nmsReflect.getCraftBukkitClass("inventory", "CraftItemStack").getMethod("asBukkitCopy", nmsReflect.getNMSClass("ItemStack"))
                     .invoke(null,nmsCopy);
             this.itemMeta = itemStack.getItemMeta();
@@ -65,15 +64,6 @@ public class ItemBuilder {
     }
     public ItemStack build() {
         itemStack.setItemMeta(itemMeta);
-        /*if (nmsCopy != null) {
-            NMSReflect nmsReflect = new NMSReflect();
-            try {
-                itemStack = (ItemStack) nmsReflect.getCraftBukkitClass("inventory", "CraftItemStack").getMethod("asBukkitCopy", nmsReflect.getNMSClass("ItemStack"))
-                        .invoke(null,nmsCopy);
-            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                e.printStackTrace();
-            }
-        }*/
         return itemStack;
     }
 }
