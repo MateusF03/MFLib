@@ -1,6 +1,0 @@
-name: MFLib
-version: 1.0
-main: com.mateus.mflib.MFLib
-commands:
-  teste:
-    description: Teste
