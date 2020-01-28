@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class ItemBuilder {
     private ItemStack itemStack;
     private ItemMeta itemMeta;
-    private Object nmsCopy;
     public ItemBuilder(Material material) {
         this.itemStack = new ItemStack(material);
         this.itemMeta = itemStack.getItemMeta();
