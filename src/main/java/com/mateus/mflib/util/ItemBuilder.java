@@ -26,6 +26,10 @@ public class ItemBuilder {
         itemMeta.setDisplayName(name);
         return this;
     }
+    public ItemBuilder setDurability(short durability) {
+        itemStack.setDurability(durability);
+        return this;
+    }
     public ItemBuilder setLore(String... lore) {
         itemMeta.setLore(Arrays.asList(lore));
         return this;
