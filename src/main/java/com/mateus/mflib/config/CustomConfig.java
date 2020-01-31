@@ -16,9 +16,9 @@ public class CustomConfig {
     public CustomConfig(Plugin plugin, String name) {
         this.plugin = plugin;
         this.name = name;
+        this.configFile = new File(plugin.getDataFolder(), name + ".yml");
     }
     public void setup() {
-        File configFile = new File(plugin.getDataFolder(), name + ".yml");
         if (!configFile.exists()) {
             configFile.getParentFile().mkdirs();
             try {
@@ -34,7 +34,6 @@ public class CustomConfig {
             e.printStackTrace();
         }
         this.config = config;
-        this.configFile = configFile;
         saveConfig();
     }
     public FileConfiguration getConfig() {
